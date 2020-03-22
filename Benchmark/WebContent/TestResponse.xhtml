@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+  <head>
+    <title>
+	Order Response Page
+	</title>
+  </head>
+  
+  <body>
+  <ui:composition template="/Layouts/commonLayout.xhtml">
+  	  
+  	  <ui:define name="content">
+  	    <h1>Response Page</h1>
+  		<p>Hi #{user.firstName} #{user.lastName}. Your orders are:</p>
+  		
+  		<h:dataTable value="#{formController.service.orders}" var="o" styleClass="order-table" 
+  		headerClass="order-table-header" rowClasses = "order-table-odd, order-table-even"
+  		columnClasses="column-1, column-2, column-3, column-4,">
+  			<h:column>
+  			<f:facet name="header">Book</f:facet>
+  			#{o.book}
+  			</h:column>
+  			
+  			<h:column>
+  			<f:facet name="header">Chapter</f:facet>
+  			#{o.chapter}
+  			</h:column>
+  			
+  			<h:column>
+  			<f:facet name="header">Verse</f:facet>
+  			#{o.verse}
+  			</h:column>
+  		
+  			<h:column>
+  			<f:facet name="header">Content</f:facet>
+  			#{o.content}
+  			</h:column>
+  		
+  		</h:dataTable>
+  		<form>
+  		<h:commandButton action="#{formController.onBack()}" value="Back" />
+  	    </form>
+  	    
+  	    <h:messages />
+  	  </ui:define>
+  	  
+  	</ui:composition>
+    
+  </body>
+</html>
